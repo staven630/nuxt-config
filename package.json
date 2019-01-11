@@ -1,0 +1,28 @@
+{
+  "name": "nuxt-config",
+  "version": "1.0.0",
+  "description": "My finest Nuxt.js project",
+  "author": "staven",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
+    "build": "nuxt build",
+    "start": "cross-env NODE_ENV=production node server/index.js",
+    "generate": "nuxt generate",
+    "analyze": "nuxt build --analyze"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.0.0",
+    "@nuxtjs/style-resources": "^0.1.1",
+    "cross-env": "^5.2.0",
+    "element-ui": "^2.4.6",
+    "koa": "^2.5.2",
+    "nuxt": "^2.0.0"
+  },
+  "devDependencies": {
+    "node-sass": "^4.11.0",
+    "nodemon": "^1.11.0",
+    "sass-loader": "^7.1.0",
+    "shrink-ray-current": "^3.0.2"
+  }
+}
