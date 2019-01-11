@@ -10,7 +10,7 @@
 - [√ 环境变量配置](#env)
 - [√ 打包分析](#analyze)
 - [√ 提供全局 scss 变量](#scss)
-- [√ 按需引入 emement-ui](#emementui)
+- [√ 按需引入 element-ui](#elementui)
 - [√ 配置 hard-source-webpack-plugin](#hard)
 - [√ 去除多余 css](#removecss)
 - [√ Brotli 压缩](#brotli)
@@ -109,7 +109,7 @@ export default {
 
 [▲ 回顶部](#top)
 
-### <span id="emementui">☞ 按需引入 emement-ui</span>
+### <span id="elementui">☞ 按需引入 element-ui</span>
 
 ```
 npm i -D babel-plugin-component
