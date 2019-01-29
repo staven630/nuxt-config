@@ -239,10 +239,12 @@ module.exports = {
                     return validSection.match(/[A-Za-z0-9-_:/]+/g) || [];
                   }
                 },
-                extensions: ['vue']
+                extensions: ['html', 'vue']
               }
             ],
-            whitelist: ['html', 'body', 'nuxt-progress']
+            whitelist: ['html', 'body',  'nuxt-progress'],
+            whitelistPatterns: [/el-.*/],
+            whitelistPatternsChildren: [/^token/, /^pre/, /^code/]
           })
         )
       }
