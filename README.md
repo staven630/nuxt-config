@@ -196,44 +196,6 @@ module.exports = {
 
 ### <span id="removecss">☞ 去除多余 css</span>
 
-- 方案一：@fullhuman/postcss-purgecss
-
-```
-npm i --save-dev @fullhuman/postcss-purgecss
-```
-
-&emsp;&emsp;修改 nuxt.config.js
-
-```
-const purgecss = require('@fullhuman/postcss-purgecss')
-module.exports = {
-  mode: 'universal',
-  build: {
-    postcss: {
-      plugins: [
-        purgecss({
-          content: ['./layouts/**/*.vue', './components/**/*.vue', './pages/**/*.vue'],
-          extractors: [
-            {
-              extractor: class Extractor {
-                static extract(content) {
-                  const validSection = content.replace(/<style([\s\S]*?)<\/style>+/gim, '')
-                  return validSection.match(/[A-Za-z0-9-_:/]+/g) || []
-                }
-              },
-              extensions: ['html', 'vue']
-            }
-          ],
-          whitelist: ['html', 'body'],
-          whitelistPatterns: [/el-.*/, /nuxt-.*/]
-        })
-      ]
-    }
-}
-```
-
-- 方案二：purgecss-webpack-plugin
-
 ```
 npm i --D glob-all purgecss-webpack-plugin
 ```
