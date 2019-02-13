@@ -1,24 +1,22 @@
-# doc_ssr
+# Nuxt.js 全面配置(持续更新中)
 
-> My good Nuxt.js project
+### 其他系列
 
-## Build Setup
+★ [vue-cli3 全面配置](https://github.com/staven630/vue-cli3-config)
 
-``` bash
-# install dependencies
-$ yarn install
+<span id="top">目录</span>
 
-# serve with hot reload at localhost:3000
-$ yarn run dev
+- [√ 初始化项目](#init)
+- [√ 环境变量配置](#env)
+- [√ 打包分析](#analyze)
+- [√ 提供全局 scss 变量](#scss)
+- [√ 按需引入 element-ui](#elementui)
+- [√ 配置 hard-source-webpack-plugin](#hard)
+- [√ 去除多余 css](#removecss)
+- [√ Brotli 压缩](#brotli)
 
-# build for production and launch server
-$ yarn run build
-$ yarn start
+### <span id="init">☞ 初始化项目</span>
 
-<<<<<<< HEAD
-# generate static project
-$ yarn run generate
-=======
 ```
 npx create-nuxt-app <项目名>
 或
@@ -241,12 +239,10 @@ module.exports = {
                     return validSection.match(/[A-Za-z0-9-_:/]+/g) || [];
                   }
                 },
-                extensions: ['html', 'vue']
+                extensions: ['vue']
               }
             ],
-            whitelist: ['html', 'body',  'nuxt-progress'],
-            whitelistPatterns: [/el-.*/],
-            whitelistPatternsChildren: [/^token/, /^pre/, /^code/]
+            whitelist: ['html', 'body', 'nuxt-progress']
           })
         )
       }
@@ -282,7 +278,6 @@ export default {
     compressor: shrinkRay()
   }
 }
->>>>>>> d2aa98bb1e15a48c6bbfb2ad144787ced7db2c3e
 ```
 
-For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
+[▲ 回顶部](#top)
