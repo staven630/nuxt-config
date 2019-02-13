@@ -1,87 +1,50 @@
-const pkg = require('./package')
-const shrinkRay = require('shrink-ray-current')
+const BASE_API =
+  process.env.BASE_API === 'prod' ? 'https://api.rsxq.com' : 'https://xingqiu.mayitest.cn'
 
 module.exports = {
   mode: 'universal',
+  loading: { color: '#3B8070' },
+  css: ['~/theme/reset.css', '~/assets/scss/common.scss', '~/assets/fonts/iconfont.css'],
+  plugins: [
+    { src: '@/plugins/bus', ssr: false },
+    { src: '@/plugins/axios', ssr: false },
+    { src: '@/plugins/persistedstate', ssr: false },
+    { src: '@/plugins/element-ui', ssr: true }
+  ],
 
   env: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:3000'
+    baseUrl: BASE_API
   },
 
-  render: {
-    http2: {
-      push: true
-    },
-    compressor: shrinkRay() // brotli compression
-  },
+  modules: ['@nuxtjs/style-resources', '@nuxtjs/axios'],
 
-  /*
-  ** Headers of the page
-  */
-  head: {
-    title: pkg.name,
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
-    ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
-  },
-
-  /*
-  ** Customize the progress-bar color
-  */
-  loading: { color: '#fff' },
-
-  /*
-  ** Global CSS
-  */
-  css: ['element-ui/lib/theme-chalk/index.css'],
-
-  /*
-  ** Plugins to load before mounting the App
-  */
-  plugins: ['@/plugins/element-ui'],
-
-  /*
-  ** Nuxt.js modules
-  */
-  modules: [
-    // Doc: https://github.com/nuxt-community/axios-module#usage
-    '@nuxtjs/axios',
-    '@nuxtjs/style-resources'
-  ],
-  // 为全局提供scss变量
   styleResources: {
-    scss: '~/assets/scss/variable.scss'
+    sass: ['@/assets/scss/variable.scss', '@/assets/scss/mixins.scss']
   },
-  /*
-  ** Axios module configuration
-  */
+
   axios: {
-    // See https://github.com/nuxt-community/axios-module#options
+    baseURL: process.env.baseUrl + '/api'
   },
 
-  /*
-  ** Build configuration
-  */
-  build: {
-    analyza: {
-      analyzeMode: 'static'
-    },
+  router: {
+    scrollBehavior: function(to, from, savedPosition) {
+      return { x: 0, y: 0 }
+    }
+  },
 
+  build: {
+    extractCSS: true,
     babel: {
       plugins: [
         [
           'component',
-          { libraryName: 'element-ui', styleLibraryName: 'theme-chalk' }
+          {
+            libraryName: 'element-ui',
+            styleLibraryName: '~theme'
+          }
         ]
-      ]
-    },
-
-    /*
-    ** You can extend webpack config here
-    */
-    extend(config, ctx) {}
+      ],
+      comments: true
+    }
   }
 }

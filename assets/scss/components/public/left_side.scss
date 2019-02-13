@@ -1,0 +1,73 @@
+.left-side {
+  position: absolute;
+  left: 0;
+  top: 60px;
+  bottom: 0;
+  width: 294px;
+  background-color: #f6f6f6;
+  border-right: 1px solid #d3d3d3;
+  background: #f6f6f6;
+
+  .menu__manage {
+    z-index: 999;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 3px;
+    background-color: #505050;
+
+    .menu__manage-title {
+      color: #fff;
+      font-size: 16px;
+      line-height: 22px;
+      margin-bottom: 20px;
+      i {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .menu__list {
+    z-index: 999;
+    margin-top: 10px;
+    li {
+      display: block;
+        line-height: 40px;
+        font-size: 14px;
+        padding: 0 10px 0 20px;
+        cursor: pointer;
+        i {
+          margin-right: 5px;
+        }
+        @extend %active;
+        &.nuxt-link-active{
+          background-color: $primaryColor;
+          color: #fff;
+        }
+    }
+  }
+}
+
+.item {
+  line-height: 36px;
+  padding: 0 10px;
+  cursor: move;
+  border: 1px dotted #d3d3d3;
+  border-top: 0;
+  &:first-child {
+    border-top: 1px dotted #d3d3d3;
+  }
+  @include ellipsis();
+}
+
+.flip-list-move {
+  transition: transform 0.8s;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    & > .left-side {
+      display: none;
+    }
+  }
+
+}

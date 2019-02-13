@@ -1,1 +1,16 @@
-$color-text: red;
+$minWidth: 1000px;
+$headerHeight: 60px;
+$fontSize: 14px;
+
+$primaryColor: #963FB1;
+$dangerColor: #f5212d;
+$bgColor: #efefef;
+$primaryTextColor: #505050;
+
+%active.active {
+  color: #fff;
+  background-color: $primaryColor;
+}
+
+
+
