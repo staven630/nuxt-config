@@ -66,7 +66,8 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    analyza: {
+    // https://zh.nuxtjs.org/api/configuration-build#analyze
+    analyze: {
       analyzeMode: 'static'
     },
 
